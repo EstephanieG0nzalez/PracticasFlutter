@@ -30,25 +30,80 @@ class HomePage extends StatelessWidget {
           ],
         ),
         body: Center(
-          child: ElevatedButton(
-            child: Text('DATOS',
-              style: TextStyle(
-                  fontWeight: FontWeight.bold,
-                  fontSize: 20)
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children:<Widget> [
+              ElevatedButton(
+                child: Text('SEGUNDA PANTALLA',
+                  style: TextStyle(
+                      fontWeight: FontWeight.bold,
+                      fontSize: 20)
+                  ),
+                onPressed: (){
+                  final route = MaterialPageRoute(
+                    builder:(context) => SecondScreen());
+                  Navigator.push(context, route);
+                },
               ),
-            onPressed: (){
-              final route = MaterialPageRoute(
-                builder:(context) => SecondScreen());
-              Navigator.push(context, route);
-            },
+              ElevatedButton(
+                child: Text('DATOS',
+                  style: TextStyle(
+                      fontWeight: FontWeight.bold,
+                      fontSize: 20)
+                  ),
+                onPressed: (){
+                  final route = MaterialPageRoute(
+                    builder:(context) => PantallaDatos());
+                  Navigator.push(context, route);
+                },
+              ),
+            ],
           ) 
         ),
       );
     }
   }
 
-  class SecondScreen extends StatelessWidget {
+class SecondScreen extends StatelessWidget {
     const SecondScreen({Key? key}) : super(key: key);
+  
+    @override
+    Widget build(BuildContext context) {
+      return Scaffold(
+        appBar: AppBar(
+          leading: Icon(Icons.menu),
+          title: Text("Segunda Pantalla"),
+          elevation: 20.0,
+          shape: const RoundedRectangleBorder(
+            borderRadius: BorderRadius.vertical(
+              bottom: Radius.circular(15))
+          ),
+          actions: <Widget> [
+            IconButton(
+              icon: const Icon(Icons.search),
+              onPressed: () => {},)
+          ],
+        ),
+        body: Center(
+          child: ElevatedButton(
+            child: Text('REGRESAR',
+              style: TextStyle(
+                  fontWeight: FontWeight.bold,
+                  fontSize: 20)
+              ),
+            onPressed:() {
+                  Navigator.pop(context);
+            }, 
+          ) 
+        ),
+      );
+    }
+  }
+
+
+
+  class PantallaDatos extends StatelessWidget {
+    const PantallaDatos({Key? key}) : super(key: key);
   
     @override
     Widget build(BuildContext context) {
@@ -81,15 +136,13 @@ class HomePage extends StatelessWidget {
                 onPressed:() {
                   Navigator.pop(context);
                 }, 
-                child: Text('Regresar'),
+                child: Text('REGRESAR',
+                    style: TextStyle(
+                      fontWeight: FontWeight.bold,
+                      fontSize: 20)
+                ),
               )
             ],
-            /*child: ElevatedButton(
-            onPressed:(){
-              Navigator.pop(context);
-            },
-            child: Text('Regresar'),
-          )*/
           ),
         ),
       );

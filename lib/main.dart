@@ -1,11 +1,25 @@
 // ignore_for_file: prefer_const_constructors
 import 'package:flutter/material.dart';
+import 'package:pantalla_datos/pages/PruebaStack.dart';
+
+import 'pages/PantallaDatos.dart';
+import 'pages/SecondScreen.dart';
+import 'pages/PruebaStack.dart';
+import 'pages/DatosStack.dart';
 
 void main() {
-  runApp(const MaterialApp(
+  runApp(MaterialApp(
     debugShowCheckedModeBanner: false,
-    title: 'Pantalla de Datos',
-    home: HomePage(),
+    title: 'Flutter',
+    initialRoute: '/',
+    routes: {
+      '/': (context) => HomePage(),
+      '/second': (context) => SecondScreen(),
+      '/datos':(context) => PantallaDatos(),
+      '/stack':(context) => PruebaStack(),
+      '/datosStack':(context) => DatosStack(),
+    },
+    //home: HomePage(),
   ));
 }
 
@@ -57,93 +71,32 @@ class HomePage extends StatelessWidget {
                   Navigator.push(context, route);
                 },
               ),
-            ],
-          ) 
-        ),
-      );
-    }
-  }
-
-class SecondScreen extends StatelessWidget {
-    const SecondScreen({Key? key}) : super(key: key);
-  
-    @override
-    Widget build(BuildContext context) {
-      return Scaffold(
-        appBar: AppBar(
-          leading: Icon(Icons.menu),
-          title: Text("Segunda Pantalla"),
-          elevation: 20.0,
-          shape: const RoundedRectangleBorder(
-            borderRadius: BorderRadius.vertical(
-              bottom: Radius.circular(15))
-          ),
-          actions: <Widget> [
-            IconButton(
-              icon: const Icon(Icons.search),
-              onPressed: () => {},)
-          ],
-        ),
-        body: Center(
-          child: ElevatedButton(
-            child: Text('REGRESAR',
-              style: TextStyle(
-                  fontWeight: FontWeight.bold,
-                  fontSize: 20)
-              ),
-            onPressed:() {
-                  Navigator.pop(context);
-            }, 
-          ) 
-        ),
-      );
-    }
-  }
-
-
-
-  class PantallaDatos extends StatelessWidget {
-    const PantallaDatos({Key? key}) : super(key: key);
-  
-    @override
-    Widget build(BuildContext context) {
-      return Scaffold(
-        appBar: AppBar(
-          title: const Text('Datos'),
-        ),
-        body: Center(
-          child:Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: <Widget>[
-              CircleAvatar(
-                backgroundImage: AssetImage("assets/images/perfil.png"),
-                radius: 100,
-              ),
-              SizedBox(height: 10.0),
-              Text('DIANA ESTEPHANIE GONZALEZ PEREZ',
-                style: TextStyle(
-                  fontWeight: FontWeight.bold,
-                  fontSize: 20),
-              ),
-              SizedBox(height: 10.0),
-              Text('TI: DESARROLLO MULTIPLATAFORMA',
-                style: TextStyle(
-                  fontStyle: FontStyle.italic,
-                  fontSize: 15),
-              ),
-              SizedBox(height: 10.0),
               ElevatedButton(
-                onPressed:() {
-                  Navigator.pop(context);
-                }, 
-                child: Text('REGRESAR',
-                    style: TextStyle(
+                child: Text('STACK',
+                  style: TextStyle(
                       fontWeight: FontWeight.bold,
                       fontSize: 20)
-                ),
-              )
+                  ),
+                onPressed: (){
+                  final route = MaterialPageRoute(
+                    builder:(context) => PruebaStack());
+                  Navigator.push(context, route);
+                },
+              ),
+              ElevatedButton(
+                child: Text('DATOS STACK',
+                  style: TextStyle(
+                      fontWeight: FontWeight.bold,
+                      fontSize: 20)
+                  ),
+                onPressed: (){
+                  final route = MaterialPageRoute(
+                    builder:(context) => DatosStack());
+                  Navigator.push(context, route);
+                },
+              ),
             ],
-          ),
+          ) 
         ),
       );
     }

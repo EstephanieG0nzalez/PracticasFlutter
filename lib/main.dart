@@ -1,7 +1,7 @@
 // ignore_for_file: prefer_const_constructors
 import 'package:flutter/material.dart';
-import 'package:pantalla_datos/pages/PruebaStack.dart';
 
+import 'pages/FormCard.dart';
 import 'pages/PantallaDatos.dart';
 import 'pages/SecondScreen.dart';
 import 'pages/PruebaStack.dart';
@@ -18,6 +18,7 @@ void main() {
       '/datos':(context) => PantallaDatos(),
       '/stack':(context) => PruebaStack(),
       '/datosStack':(context) => DatosStack(),
+      '/form':(context) => MyStateFulWidget(),
     },
     //home: HomePage(),
   ));
@@ -92,6 +93,18 @@ class HomePage extends StatelessWidget {
                 onPressed: (){
                   final route = MaterialPageRoute(
                     builder:(context) => DatosStack());
+                  Navigator.push(context, route);
+                },
+              ),
+              ElevatedButton(
+                child: Text('CARD',
+                  style: TextStyle(
+                      fontWeight: FontWeight.bold,
+                      fontSize: 20)
+                  ),
+                onPressed: (){
+                  final route = MaterialPageRoute(
+                    builder:(context) => MyStateFulWidget());
                   Navigator.push(context, route);
                 },
               ),

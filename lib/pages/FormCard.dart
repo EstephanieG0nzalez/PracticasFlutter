@@ -35,7 +35,7 @@ class _MyStateFulWidgetState extends State<MyStateFulWidget> {
       body: Center(
         child: Form(
           child: Column(
-            //mainAxisAlignment: MainAxisAlignment.center,
+            mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
               inputImagen(),
               inputName(_controller),  
